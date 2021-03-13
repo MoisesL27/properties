@@ -11,6 +11,7 @@ import { TranslocoRootModule } from './transloco/transloco-root.module';
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     FeaturePropertyModule,
     AgmCoreModule.forRoot({
       apiKey: environment.mapsApiKey,
