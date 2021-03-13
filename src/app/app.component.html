@@ -1,3 +1,7 @@
-<div class="container">
-  <app-custom-navbar></app-custom-navbar>
+<div class="container pt-4">
+  <app-custom-navbar
+    [items]="navbarItems"
+    [selectedItem]="navbarSelectedItem"
+    (itemChange)="itemChange($event)"
+  ></app-custom-navbar>
 </div>

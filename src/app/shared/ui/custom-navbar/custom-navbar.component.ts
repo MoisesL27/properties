@@ -1,16 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-custom-navbar',
   templateUrl: './custom-navbar.component.html',
   styleUrls: ['./custom-navbar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomNavbarComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CustomNavbarComponent {
+  @Input() items: string[] = [];
+  @Input() selectedItem: number;
+  @Output() itemChange = new EventEmitter<number>();
 }

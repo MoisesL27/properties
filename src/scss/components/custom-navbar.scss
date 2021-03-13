@@ -1,6 +1,20 @@
 .custom-navbar {
+  border-radius: 0.5rem;
+
   .nav-item .nav-item-text {
     min-width: 150px;
+  }
+
+  .nav-item-text:hover {
+    cursor: pointer;
+    color: $green;
+  }
+
+  .nav-item-text::after {
+    content: '';
+    margin-top: 1.5rem; // equals to mt-4
+    height: 6px;
+    width: 100%;
   }
 
   .nav-item.nav-item-active {
@@ -8,9 +22,6 @@
     font-weight: bold;
 
     .nav-item-text::after {
-      content: '';
-      height: 6px;
-      width: 100%;
       background-color: $green;
     }
   }

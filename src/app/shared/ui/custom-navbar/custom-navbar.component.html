@@ -1,8 +1,10 @@
 <nav class="nav nav-pills nav-fill bg-white custom-navbar">
-  <li class="d-flex justify-content-center nav-item nav-item-active pt-4">
-    <div class="d-flex flex-column nav-item-text">Fotos</div>
-  </li>
-  <li class="d-flex justify-content-center nav-item nav-item-active pt-4">
-    <div class="d-flex flex-column nav-item-text">Mapa</div>
-  </li>
+  <ng-container *ngFor="let item of items; index as i">
+    <li
+      class="d-flex justify-content-center nav-item pt-4 cursor-default"
+      [class.nav-item-active]="i === selectedItem"
+    >
+      <div class="d-flex flex-column nav-item-text" (click)="itemChange.emit(i)">{{ item }}</div>
+    </li>
+  </ng-container>
 </nav>
