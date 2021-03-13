@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-property-overview',
@@ -7,11 +8,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PropertyOverviewComponent {
+  @Input() imagesUrl$: Observable<string[]> = of([]);
+  @Input() tags$: Observable<string[]> = of([]);
+
   navbarItems = ['Fotos', 'Mapa'];
   navbarSelectedItem = 0;
-
-  images: string[] = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  tags = ['Compran', 'Venta'];
 
   lat = 28.70406;
   long = 77.102493;

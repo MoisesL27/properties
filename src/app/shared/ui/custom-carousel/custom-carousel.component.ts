@@ -1,6 +1,7 @@
+import { map } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { NgbCarouselConfig, NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-custom-carousel',
@@ -11,10 +12,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class CustomCarouselComponent implements OnInit {
   private currentIndex: BehaviorSubject<number>;
 
-  @Input() imagesUrl: string[] = [];
-  @Input() tags: string[] = [];
+  @Input() imagesUrl$: Observable<string[]> = of([]);
+  @Input() tags$: Observable<string[]> = of([]);
 
-  slidesNumber = 0;
+  slidesNumber$: Observable<number>;
   currentIndex$: Observable<number>;
 
   constructor(config: NgbCarouselConfig) {
@@ -27,7 +28,7 @@ export class CustomCarouselComponent implements OnInit {
     this.currentIndex = new BehaviorSubject(1);
     this.currentIndex$ = this.currentIndex.asObservable();
 
-    this.slidesNumber = this.imagesUrl.length;
+    this.slidesNumber$ = this.imagesUrl$.pipe(map((images) => images.length));
   }
 
   /**

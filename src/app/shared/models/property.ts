@@ -29,3 +29,8 @@ export interface Property {
   tags: string[];
   title: string;
 }
+
+export interface PropertyImages {
+  id_property: number;
+  images: string[];
+}

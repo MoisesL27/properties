@@ -5,8 +5,8 @@
 ></app-custom-navbar>
 
 <app-custom-carousel
-  [imagesUrl]="images"
-  [tags]="tags"
+  [imagesUrl$]="imagesUrl$"
+  [tags$]="tags$"
   [class.d-none]="!(navbarSelectedItem === 0)"
 ></app-custom-carousel>
 

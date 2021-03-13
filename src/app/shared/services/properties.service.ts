@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Property } from '@shared/models';
+import { Property, PropertyImages } from '@shared/models';
 import { DataResponse } from '@shared/models/response';
 import { API_URL } from '@shared/tokens';
-import { ImageUrl } from '@shared/types';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -25,10 +24,10 @@ export class PropertiesService {
     );
   }
 
-  getPropertyImages(propertyId: number): Observable<DataResponse<ImageUrl[]>> {
+  getPropertyImages(propertyId: number): Observable<DataResponse<PropertyImages>> {
     const resource = this.getPropertyImagesUrl(propertyId);
 
-    return this.httpClient.get<ImageUrl[]>(resource).pipe(
+    return this.httpClient.get<PropertyImages>(resource).pipe(
       map((images) => ({ data: images, success: true })),
       catchError((error) => {
         console.log(error);
