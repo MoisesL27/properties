@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-property-information',
@@ -10,4 +10,6 @@ export class PropertyInformationComponent {
   @Input() title: string;
   @Input() address: string;
   @Input() price: number;
+
+  @Output() showMap = new EventEmitter<void>()
 }

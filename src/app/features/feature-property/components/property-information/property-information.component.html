@@ -1,12 +1,13 @@
-<section class="py-4">
+<section class="py-4 px-5">
   <div class="row">
-    <div class="col-12 col-md-6">
-      <div>{{ title }}</div>
-      <div>{{ address }}</div>
+    <div class="col-12 col-lg-5">
+      <div class="font-weight-bold text-primary text-justify title">{{ title }}</div>
+      <div class="text-justify address">{{ address }}</div>
     </div>
-    <div class="col-12 col-md-3">
+    <div class="col-12 col-lg-4">
       <button
         class="d-flex flex-column justify-content-center align-items-center btn btn-secondary btn-map"
+        (click)="showMap.emit()"
       >
         <img
           width="60"
@@ -17,8 +18,10 @@
         {{ 'see-in-map' | transloco }}
       </button>
     </div>
-    <div class="col-12 col-md-3">
-      <div>{{ price }}</div>
+    <div class="col-12 col-lg-3">
+      <div class="h-100 d-flex justify-content-center align-items-center font-weight-bold price">
+        $ {{ price }}
+      </div>
     </div>
   </div>
 </section>
