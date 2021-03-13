@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  mapsApiKey: 'AIzaSyBWtvyr65PWNflk7Lc2Yv-i9RfQngGxrtk',
+  apiUrl: 'https://rtfe-test-default-rtdb.firebaseio.com',
 };
 
 /*

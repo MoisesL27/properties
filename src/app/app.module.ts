@@ -1,9 +1,11 @@
+import { environment } from './../environments/environment';
+import { AgmCoreModule } from '@agm/core';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FeaturePropertyModule } from '@features/feature-property/feature-property.module';
+import { API_URL } from '@shared/tokens';
 import { AppComponent } from './app.component';
-import { AgmCoreModule } from '@agm/core';
-import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
 
 @NgModule({
@@ -11,14 +13,13 @@ import { TranslocoRootModule } from './transloco/transloco-root.module';
     BrowserModule,
     FeaturePropertyModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBWtvyr65PWNflk7Lc2Yv-i9RfQngGxrtk',
+      apiKey: environment.mapsApiKey,
     }),
     HttpClientModule,
     TranslocoRootModule,
   ],
   declarations: [AppComponent],
-
-  providers: [],
+  providers: [{ provide: API_URL, useValue: environment.apiUrl }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
