@@ -3,5 +3,18 @@
   [selectedItem]="navbarSelectedItem"
   (itemChange)="itemChange($event)"
 ></app-custom-navbar>
-<app-custom-carousel [imagesUrl]="images" [tags]="tags"></app-custom-carousel>
-<br /><br /><br />
+
+<app-custom-carousel
+  [imagesUrl]="images"
+  [tags]="tags"
+  [class.d-none]="!(navbarSelectedItem === 0)"
+></app-custom-carousel>
+
+<agm-map
+  [class.d-none]="!(navbarSelectedItem === 1)"
+  [latitude]="lat"
+  [longitude]="long"
+  [draggable]="false"
+>
+  <agm-marker [latitude]="lat" [longitude]="long"></agm-marker>
+</agm-map>
