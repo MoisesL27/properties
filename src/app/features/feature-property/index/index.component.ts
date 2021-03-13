@@ -39,7 +39,7 @@ export class IndexComponent {
 
   constructor(private propertiesService: PropertiesService) {}
 
-  changeProperty(): void {
+  showNextProperty(): void {
     const currentIndex = this.propertyIndex.value;
 
     if (currentIndex < this.propertiesLenght - 1) {

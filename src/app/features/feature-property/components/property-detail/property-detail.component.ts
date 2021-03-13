@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
 import { Property } from '@shared/models';
 import { Observable } from 'rxjs';
 @Component({
@@ -9,4 +9,5 @@ import { Observable } from 'rxjs';
 })
 export class PropertyDetailComponent {
   @Input() property$: Observable<Property>;
+  @Output() showNextProperty = new EventEmitter<void>();
 }

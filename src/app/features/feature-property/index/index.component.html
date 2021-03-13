@@ -3,8 +3,7 @@
   [property$]="currentProperty$"
 ></app-property-overview>
 <app-property-information [property$]="currentProperty$"></app-property-information>
-<app-property-detail [property$]="currentProperty$"></app-property-detail>
-
-<button (click)="changeProperty()">change property</button>
-
-<br /><br />
+<app-property-detail
+  [property$]="currentProperty$"
+  (showNextProperty)="showNextProperty()"
+></app-property-detail>

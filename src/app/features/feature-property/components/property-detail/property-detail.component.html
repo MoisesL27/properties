@@ -6,4 +6,15 @@
   <section>
     <h5 class="font-weight-bold text-primary">{{ 'property-details' | transloco }}:</h5>
   </section>
+
+  <div class="divider my-4"></div>
+
+  <section class="d-flex justify-content-center">
+    <button
+      class="btn btn-success text-white border-rounded-3 py-2 px-4"
+      (click)="showNextProperty.emit()"
+    >
+      {{ 'see-next' | transloco }}
+    </button>
+  </section>
 </div>
