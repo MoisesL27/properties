@@ -1,0 +1,12 @@
+<div class="property-overview">
+  <ngb-carousel class="custom-carousel" (slide)="slideChange($event)">
+    <ng-container *ngFor="let imageUrl of imagesUrl">
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img class="w-100" [src]="imageUrl" alt="Random first slide" />
+        </div>
+        <div class="navigation-indicator">{{ 1 }} / {{ slideNumber }}</div>
+      </ng-template>
+    </ng-container>
+  </ngb-carousel>
+</div>

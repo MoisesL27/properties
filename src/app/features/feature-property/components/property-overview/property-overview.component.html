@@ -3,15 +3,5 @@
   [selectedItem]="navbarSelectedItem"
   (itemChange)="itemChange($event)"
 ></app-custom-navbar>
-<div class="property-overview">
-  <ngb-carousel class="custom-carousel">
-    <ng-container *ngFor="let imageUrl of images">
-      <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
-          <img class="w-100" [src]="imageUrl" alt="Random first slide" />
-        </div>
-      </ng-template>
-    </ng-container>
-  </ngb-carousel>
-</div>
+<app-custom-carousel [imagesUrl]="images"></app-custom-carousel>
 <br /><br /><br />
