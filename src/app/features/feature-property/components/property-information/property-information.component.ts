@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-property-information',
@@ -6,8 +6,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./property-information.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PropertyInformationComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+export class PropertyInformationComponent {
+  @Input() title: string;
+  @Input() address: string;
+  @Input() price: number;
 }
