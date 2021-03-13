@@ -1,8 +1,14 @@
-<app-property-overview [imagesUrl$]="propertyImages$"></app-property-overview>
+<app-property-overview
+  [imagesUrl$]="propertyImages$"
+  [property$]="currentProperty$"
+></app-property-overview>
 <app-property-information
   title="Apartamento de lujo recien comprado"
   address="Guanacaste, La Cruz, Bahía Salinas, Condominio Costa Esmeralda Apto. 3C"
   [price]="199000"
 ></app-property-information>
 <app-property-detail></app-property-detail>
+
+<button (click)="changeProperty()">change property</button>
+
 <br /><br />

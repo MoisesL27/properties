@@ -10,11 +10,16 @@
   [class.d-none]="!(navbarSelectedItem === 0)"
 ></app-custom-carousel>
 
-<agm-map
-  [class.d-none]="!(navbarSelectedItem === 1)"
-  [latitude]="lat"
-  [longitude]="long"
-  [draggable]="false"
->
-  <agm-marker [latitude]="lat" [longitude]="long"></agm-marker>
-</agm-map>
+<ng-container *ngIf="property$ | async as property">
+  <agm-map
+    [class.d-none]="!(navbarSelectedItem === 1)"
+    [latitude]="property?.location.latitude"
+    [longitude]="property?.location.longitude"
+    [draggable]="false"
+  >
+    <agm-marker
+      [latitude]="property?.location.latitude"
+      [longitude]="property?.location.longitude"
+    ></agm-marker>
+  </agm-map>
+</ng-container>

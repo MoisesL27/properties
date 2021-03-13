@@ -1,5 +1,7 @@
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Property } from '@shared/models';
 import { Observable, of } from 'rxjs';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-property-overview',
@@ -7,16 +9,18 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   styleUrls: ['./property-overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PropertyOverviewComponent {
-  @Input() imagesUrl$: Observable<string[]> = of([]);
-  @Input() tags$: Observable<string[]> = of([]);
+export class PropertyOverviewComponent implements OnInit {
+  @Input() imagesUrl$: Observable<string[]>;
+  @Input() property$: Observable<Property>;
 
   navbarItems = ['Fotos', 'Mapa'];
   navbarSelectedItem = 0;
 
-  lat = 28.70406;
-  long = 77.102493;
-  googleMapType: any = 'satellite';
+  tags$: Observable<string[]>;
+
+  ngOnInit(): void {
+    this.tags$ = this.property$.pipe(map((property) => property.tags));
+  }
 
   itemChange(index: number): void {
     this.navbarSelectedItem = index;

@@ -1,6 +1,6 @@
-import { map } from 'rxjs/operators';
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { NgbCarouselConfig, NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
+import { map, tap, shareReplay } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgbCarousel, NgbCarouselConfig, NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Component({
@@ -12,8 +12,9 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 export class CustomCarouselComponent implements OnInit {
   private currentIndex: BehaviorSubject<number>;
 
-  @Input() imagesUrl$: Observable<string[]> = of([]);
+  @Input() imagesUrl$: Observable<string[]>;
   @Input() tags$: Observable<string[]> = of([]);
+  @ViewChild(NgbCarousel, { static: true }) carousel: NgbCarousel;
 
   slidesNumber$: Observable<number>;
   currentIndex$: Observable<number>;
@@ -28,12 +29,17 @@ export class CustomCarouselComponent implements OnInit {
     this.currentIndex = new BehaviorSubject(1);
     this.currentIndex$ = this.currentIndex.asObservable();
 
-    this.slidesNumber$ = this.imagesUrl$.pipe(map((images) => images.length));
+    this.slidesNumber$ = this.imagesUrl$.pipe(
+      // Every time that images change the carousel is reseted to the first slide
+      tap(() => this.carousel.select('slide-0')),
+      map((images) => images.length),
+      shareReplay()
+    );
   }
 
   /**
    * When an slide event happend compute the current index based in the event information
-   * @param slideEvent
+   * @param slideEvent and event value emitted by the carousel
    */
   slideChange(slideEvent: NgbSlideEvent): void {
     const lastHyphenIndex = slideEvent.current.lastIndexOf('-');

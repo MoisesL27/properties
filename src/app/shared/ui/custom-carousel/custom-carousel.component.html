@@ -1,6 +1,6 @@
 <ngb-carousel class="custom-carousel" (slide)="slideChange($event)">
-  <ng-container *ngFor="let imageUrl of imagesUrl$ | async">
-    <ng-template ngbSlide>
+  <ng-container *ngFor="let imageUrl of imagesUrl$ | async; index as i">
+    <ng-template ngbSlide [id]="'slide-' + i">
       <div class="d-flex tags-indicator">
         <ng-container *ngFor="let tag of tags$ | async; first as isFirst">
           <div class="tag" [class.ml-1]="!isFirst">{{ tag }}</div>
@@ -9,10 +9,8 @@
       <div class="picsum-img-wrapper">
         <img class="w-100" [src]="imageUrl" [alt]="'image-property' | transloco" />
       </div>
-      <ng-container *ngIf="(slidesNumber$ | async) > 0">
-        <div class="navigation-indicator">
-          {{ currentIndex$ | async }} / {{ slidesNumber$ | async }}
-        </div>
+      <ng-container *ngIf="slidesNumber$ | async as slidesNumber">
+        <div class="navigation-indicator">{{ currentIndex$ | async }} / {{ slidesNumber }}</div>
       </ng-container>
       <div class="heart-indicator"></div>
     </ng-template>
