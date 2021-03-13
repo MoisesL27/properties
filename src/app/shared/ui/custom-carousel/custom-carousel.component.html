@@ -2,10 +2,18 @@
   <ngb-carousel class="custom-carousel" (slide)="slideChange($event)">
     <ng-container *ngFor="let imageUrl of imagesUrl">
       <ng-template ngbSlide>
+        <div class="d-flex tags-indicator">
+          <ng-container *ngFor="let tag of tags; first as isFirst">
+            <div class="tag" [class.ml-1]="!isFirst">{{ tag }}</div>
+          </ng-container>
+        </div>
         <div class="picsum-img-wrapper">
           <img class="w-100" [src]="imageUrl" alt="Random first slide" />
         </div>
-        <div class="navigation-indicator">{{ 1 }} / {{ slideNumber }}</div>
+        <ng-container *ngIf="slidesNumber > 0">
+          <div class="navigation-indicator">{{ currentIndex$ | async }} / {{ slidesNumber }}</div>
+        </ng-container>
+        <div class="heart-indicator"></div>
       </ng-template>
     </ng-container>
   </ngb-carousel>
