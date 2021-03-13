@@ -1,18 +1,6 @@
-<section>
-  <h5 class="font-weight-bold text-primary">{{ 'description' | transloco }}:</h5>
-  <div>
-    Lorem ipsum dolor sit amet consectetur adipiscing elit pharetra tincidunt, curabitur eget erat
-    fusce placerat nullam leo venenatis dignissim fames, ut ultricies vel ad porta aptent mollis
-    litora. Semper sem metus volutpat luctus laoreet venenatis rutrum scelerisque, taciti porttitor
-    leo orci donec ante faucibus conubia, facilisi aptent enim blandit consequat nisl etiam.
-    Facilisis pharetra eget id quam maecenas sociosqu pretium vestibulum egestas, euismod
-    suspendisse sodales ridiculus rhoncus cum sagittis purus laoreet, non mus venenatis rutrum
-    tellus parturient nostra semper. Senectus aenean sodales habitant fames nam magnis tortor nisi
-    ut, fringilla malesuada placerat ullamcorper commodo maecenas inceptos rutrum, primis lacus
-    vestibulum tincidunt phasellus litora ligula in. Semper nulla interdum cubilia phasellus
-    senectus urna sociosqu a, facilisis cum faucibus aliquam tempor varius dapibus nisi elementum,
-    posuere feugiat pharetra dictum tellus integer quis. Enim volutpat platea purus ridiculus
-    parturient auctor mollis at est tincidunt, nascetur imperdiet potenti molestie commodo hac
-    tortor mus
-  </div>
-</section>
+<ng-container *ngIf="property$ | async as property">
+  <section>
+    <h5 class="font-weight-bold text-primary">{{ 'description' | transloco }}:</h5>
+    <div>{{ property.description }}</div>
+  </section>
+</ng-container>

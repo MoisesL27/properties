@@ -1,4 +1,6 @@
+import { Observable } from 'rxjs';
 import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
+import { Property } from '@shared/models';
 
 @Component({
   selector: 'app-property-information',
@@ -7,9 +9,7 @@ import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PropertyInformationComponent {
-  @Input() title: string;
-  @Input() address: string;
-  @Input() price: number;
+  @Input() property$: Observable<Property>;
 
-  @Output() showMap = new EventEmitter<void>()
+  @Output() showMap = new EventEmitter<void>();
 }

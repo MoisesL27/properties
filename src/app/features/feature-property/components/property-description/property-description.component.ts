@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Property } from '@shared/models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-property-description',
@@ -6,8 +8,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./property-description.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PropertyDescriptionComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+export class PropertyDescriptionComponent {
+  @Input() property$: Observable<Property>;
 }
