@@ -1,0 +1,17 @@
+.custom-navbar {
+  .nav-item .nav-item-text {
+    min-width: 150px;
+  }
+
+  .nav-item.nav-item-active {
+    color: $green;
+    font-weight: bold;
+
+    .nav-item-text::after {
+      content: '';
+      height: 6px;
+      width: 100%;
+      background-color: $green;
+    }
+  }
+}
