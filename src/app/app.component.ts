@@ -5,11 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  navbarItems = ['Fotos', 'Menu'];
-  navbarSelectedItem = 0;
-
-  itemChange(index: number) {
-    this.navbarSelectedItem = index;
-  }
-}
+export class AppComponent {}
