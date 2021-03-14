@@ -15,3 +15,24 @@
   height: 1px;
   background-color: rgba(20, 20, 20, 0.2);
 }
+
+.arrow::after {
+  border: solid $green;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 0.4em;
+  vertical-align: 0.15em;
+  content: '';
+}
+
+.arrow-up::after {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  vertical-align: -0.15em;
+}
+
+.arrow-down::after {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
