@@ -12,6 +12,11 @@ export class PropertiesService {
 
   constructor(@Inject(API_URL) private apiUrl: string, private httpClient: HttpClient) {}
 
+  /**
+   * Get all the properties available based in the following resource
+   * https://rtfe-test-default-rtdb.firebaseio.com/properties.json
+   * @returns Observable<DataResponse<Property[]>>
+   */
   getProperties(): Observable<DataResponse<Property[]>> {
     const resource = `${this.apiUrl}/${this.path}`;
 
@@ -24,6 +29,12 @@ export class PropertiesService {
     );
   }
 
+  /**
+   * Get all the images related with a property using the following resource
+   *  https://rtfe-test-default-rtdb.firebaseio.com/property_images/#.json
+   * @param propertyId Property id
+   * @returns Observable<DataResponse<PropertyImages>>
+   */
   getPropertyImages(propertyId: number): Observable<DataResponse<PropertyImages>> {
     const resource = this.getPropertyImagesUrl(propertyId);
 
@@ -35,6 +46,12 @@ export class PropertiesService {
       })
     );
   }
+
+  /**
+   * Compose the url (resource) used to get the images related to a property
+   * @param propertyId Property id
+   * @returns string
+   */
 
   private getPropertyImagesUrl(propertyId: number): string {
     return `${this.apiUrl}/property_images/${propertyId}.json`;

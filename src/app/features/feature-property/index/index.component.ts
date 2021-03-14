@@ -28,7 +28,7 @@ export class IndexComponent {
   );
 
   /**
-   * Store the current property, and the order is habled by this.propertyIndex behaviorSubjec
+   * Stores the current property, and the order is handled by this.propertyIndex behaviorSubjec
    */
   currentProperty$ = this.propertyIndex.asObservable().pipe(
     switchMap((index) =>
@@ -40,8 +40,8 @@ export class IndexComponent {
   );
 
   /**
-   * When a new property is rendered using see next button each time that it happend request
-   * for the properties images
+   * When rendering a new property using the (see next button) every time it happened, a new request
+   * is made to get the images of the current property
    */
   propertyImages$ = this.currentProperty$.pipe(
     switchMap((property) => {
@@ -61,7 +61,7 @@ export class IndexComponent {
   ) {}
 
   /**
-   * Handle the logic to show more information of other properties
+   * Handle the logic to show more information on other properties
    * @returns void
    */
   showNextProperty(): void {

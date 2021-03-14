@@ -27,7 +27,7 @@ export class PropertyDetailComponent implements OnInit {
 
   ngOnInit(): void {
     /**
-     * Store an array of details following the Detail interface
+     * Stores an array of details following the Detail interface
      */
     this.details$ = this.property$.pipe(
       map((property) => {
