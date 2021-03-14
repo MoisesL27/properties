@@ -1,9 +1,9 @@
-import { PropertyOverviewComponent } from './../components/property-overview/property-overview.component';
 import { ChangeDetectionStrategy, Component, Inject, ViewChild } from '@angular/core';
 import { PropertiesService } from '@shared/services';
 import { HeaderMenu } from '@shared/ui/header/header-menu';
 import { BehaviorSubject } from 'rxjs';
 import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { PropertyOverviewComponent } from './../components/property-overview/property-overview.component';
 import { headerConfig, HeaderConfigToken } from './header-config';
 
 @Component({
@@ -18,9 +18,11 @@ export class IndexComponent {
 
   private propertiesLenght = 0;
   private propertyIndex = new BehaviorSubject<number>(0);
+  private loading = new BehaviorSubject(true);
 
   private properties$ = this.propertiesService.getProperties().pipe(
     map((result) => (result.success ? result.data : [])),
+    tap(() => this.loading.next(false)),
     tap((properties) => (this.propertiesLenght = properties.length)),
     shareReplay()
   );
@@ -43,6 +45,8 @@ export class IndexComponent {
     }),
     shareReplay()
   );
+
+  isLoading$ = this.loading.asObservable();
 
   constructor(
     private propertiesService: PropertiesService,

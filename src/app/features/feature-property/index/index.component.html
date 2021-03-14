@@ -13,3 +13,10 @@
     (showNextProperty)="showNextProperty()"
   ></app-property-detail>
 </div>
+
+<ng-container *ngIf="isLoading$ | async">
+  <div class="loader-container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-primary">{{ 'loading-information' | transloco }}</h1>
+    <div class="loader"></div>
+  </div>
+</ng-container>
