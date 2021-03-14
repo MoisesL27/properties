@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { PropertiesService } from '@shared/services';
+import { HeaderMenu } from '@shared/ui/header/header-menu';
 import { BehaviorSubject } from 'rxjs';
 import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { headerConfig, HeaderConfigToken } from './header-config';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
+  providers: [{ provide: HeaderConfigToken, useValue: headerConfig }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IndexComponent {
   private propertiesLenght = 0;
@@ -37,7 +41,10 @@ export class IndexComponent {
     shareReplay()
   );
 
-  constructor(private propertiesService: PropertiesService) {}
+  constructor(
+    private propertiesService: PropertiesService,
+    @Inject(HeaderConfigToken) public headerConfig: HeaderMenu[]
+  ) {}
 
   showNextProperty(): void {
     const currentIndex = this.propertyIndex.value;

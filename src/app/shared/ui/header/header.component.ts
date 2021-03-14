@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { HeaderMenu } from './header-menu';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  @Input() menus: HeaderMenu[] = [];
   @Output() showNextProperty = new EventEmitter<void>();
 
   isShown = false;

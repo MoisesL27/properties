@@ -5,18 +5,20 @@
   <div class="collapse navbar-collapse" [ngClass]="{ show: isShown }" id="navbarTogglerDemo01">
     <a class="navbar-brand font-weight-bold logo">LOGO</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <div ngbDropdown>
-          <a class="nav-link dropdown-toggle custom-dropdown-arrow" ngbDropdownToggle
-            >Toggle dropdown</a
-          >
-          <div ngbDropdownMenu>
-            <button ngbDropdownItem>Action - 1</button>
-            <button ngbDropdownItem>Another Action</button>
-            <button ngbDropdownItem>Something else is here</button>
+      <ng-container *ngFor="let menu of menus">
+        <li class="nav-item">
+          <div ngbDropdown>
+            <a class="nav-link dropdown-toggle custom-dropdown-arrow" ngbDropdownToggle>{{
+              menu.label | transloco
+            }}</a>
+            <div ngbDropdownMenu>
+              <ng-container *ngFor="let item of menu.items">
+                <button ngbDropdownItem>{{ item | transloco }}</button>
+              </ng-container>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      </ng-container>
     </ul>
     <div class="form-inline my-2 my-lg-0">
       <button

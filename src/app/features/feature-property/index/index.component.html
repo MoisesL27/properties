@@ -1,4 +1,4 @@
-<app-header (showNextProperty)="showNextProperty()"></app-header>
+<app-header (showNextProperty)="showNextProperty()" [menus]="headerConfig"></app-header>
 <div class="container py-4">
   <app-property-overview
     [imagesUrl$]="propertyImages$"

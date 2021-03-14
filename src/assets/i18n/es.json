@@ -20,5 +20,18 @@
   "type": "Tipo de propiedad",
   "warehouse": "Bodega",
   "yes": "Si",
-  "no": "No"
+  "no": "No",
+  "on-sale": "En Venta",
+  "houses": "Casas",
+  "apartments": "Apartamentos",
+  "offices": "Oficinas",
+  "new-developments": "Desarollo nuevos",
+  "for-rent": "En Alquiler",
+  "brokers": "Brokers",
+  "owners": "Dueños",
+  "nortgage": "Hipoteca",
+  "financial-entity": "Entidades financieras",
+  "pre-approval": "Buscar preaprobación",
+  "need-help": "Necesito Ayuda",
+  "guide-to-purchase": "Guías para comprar una propiedad"
 }
