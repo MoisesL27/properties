@@ -4,13 +4,18 @@
   <div class="divider my-4"></div>
 
   <section>
-    <h5 class="font-weight-bold text-primary">{{ 'property-details' | transloco }}:</h5>
+    <h5 class="font-weight-bold text-primary pb-4">{{ 'property-details' | transloco }}:</h5>
     <div class="px-5">
       <div class="row">
         <ng-container *ngFor="let detail of details$ | async; index as i">
           <div class="col-12 col-md-4 py-2">
-            <div>{{ detail.label | transloco }}:</div>
-            <div class="font-weight-bold">{{ detail.value }}</div>
+            <div class="d-flex">
+              <span class="material-icons detail-icon"> {{ detail.icon }} </span>
+              <div class="ml-2">
+                <div>{{ detail.label | transloco }}:</div>
+                <div class="font-weight-bold">{{ detail.value }}</div>
+              </div>
+            </div>
           </div>
         </ng-container>
       </div>

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white pt-3 pb-4 px-md-5">
+  <button class="navbar-toggler" type="button" (click)="toggle()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" [ngClass]="{ show: isShown }" id="navbarTogglerDemo01">
+    <a class="navbar-brand font-weight-bold logo">LOGO</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <div ngbDropdown>
+          <a class="nav-link dropdown-toggle custom-dropdown-arrow" ngbDropdownToggle
+            >Toggle dropdown</a
+          >
+          <div ngbDropdownMenu>
+            <button ngbDropdownItem>Action - 1</button>
+            <button ngbDropdownItem>Another Action</button>
+            <button ngbDropdownItem>Something else is here</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <button
+        class="btn btn-success text-white border-rounded-3 py-2 px-4"
+        (click)="showNextProperty.emit()"
+      >
+        {{ 'see-next' | transloco }}
+      </button>
+    </div>
+  </div>
+</nav>

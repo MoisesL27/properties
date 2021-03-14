@@ -1,9 +1,12 @@
-<app-property-overview
-  [imagesUrl$]="propertyImages$"
-  [property$]="currentProperty$"
-></app-property-overview>
-<app-property-information [property$]="currentProperty$"></app-property-information>
-<app-property-detail
-  [property$]="currentProperty$"
-  (showNextProperty)="showNextProperty()"
-></app-property-detail>
+<app-header (showNextProperty)="showNextProperty()"></app-header>
+<div class="container py-4">
+  <app-property-overview
+    [imagesUrl$]="propertyImages$"
+    [property$]="currentProperty$"
+  ></app-property-overview>
+  <app-property-information [property$]="currentProperty$"></app-property-information>
+  <app-property-detail
+    [property$]="currentProperty$"
+    (showNextProperty)="showNextProperty()"
+  ></app-property-detail>
+</div>
