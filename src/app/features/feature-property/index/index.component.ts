@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { PropertyOverviewComponent } from './../components/property-overview/property-overview.component';
+import { ChangeDetectionStrategy, Component, Inject, ViewChild } from '@angular/core';
 import { PropertiesService } from '@shared/services';
 import { HeaderMenu } from '@shared/ui/header/header-menu';
 import { BehaviorSubject } from 'rxjs';
@@ -13,6 +14,8 @@ import { headerConfig, HeaderConfigToken } from './header-config';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IndexComponent {
+  @ViewChild(PropertyOverviewComponent) overviewComponent: PropertyOverviewComponent;
+
   private propertiesLenght = 0;
   private propertyIndex = new BehaviorSubject<number>(0);
 
@@ -43,7 +46,7 @@ export class IndexComponent {
 
   constructor(
     private propertiesService: PropertiesService,
-    @Inject(HeaderConfigToken) public headerConfig: HeaderMenu[]
+    @Inject(HeaderConfigToken) public headerMenus: HeaderMenu[]
   ) {}
 
   showNextProperty(): void {
@@ -55,5 +58,9 @@ export class IndexComponent {
       return;
     }
     this.propertyIndex.next(0);
+  }
+
+  showMap(): void {
+    this.overviewComponent.itemChange(1);
   }
 }

@@ -4,7 +4,9 @@
       class="d-flex justify-content-center nav-item pt-4 cursor-default"
       [class.nav-item-active]="i === selectedItem"
     >
-      <div class="d-flex flex-column nav-item-text" (click)="itemChange.emit(i)">{{ item }}</div>
+      <div class="d-flex flex-column nav-item-text" (click)="itemChange.emit(i)">
+        {{ item | transloco }}
+      </div>
     </li>
   </ng-container>
 </nav>

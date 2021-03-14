@@ -1,10 +1,13 @@
-<app-header (showNextProperty)="showNextProperty()" [menus]="headerConfig"></app-header>
+<app-header (showNextProperty)="showNextProperty()" [menus]="headerMenus"></app-header>
 <div class="container py-4">
   <app-property-overview
     [imagesUrl$]="propertyImages$"
     [property$]="currentProperty$"
   ></app-property-overview>
-  <app-property-information [property$]="currentProperty$"></app-property-information>
+  <app-property-information
+    [property$]="currentProperty$"
+    (showMap)="showMap()"
+  ></app-property-information>
   <app-property-detail
     [property$]="currentProperty$"
     (showNextProperty)="showNextProperty()"

@@ -1,6 +1,8 @@
 <ng-container *ngIf="property$ | async as property">
   <section>
     <h5 class="font-weight-bold text-primary">{{ 'description' | transloco }}:</h5>
-    <div>{{ property.description }}</div>
+    <div class="show-more-show-less">
+      {{ property.description }}
+    </div>
   </section>
 </ng-container>

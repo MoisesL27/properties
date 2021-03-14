@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Property } from '@shared/models';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -10,11 +10,13 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PropertyOverviewComponent implements OnInit {
+  private navbarSelectedItem = new BehaviorSubject(0);
+
   @Input() imagesUrl$: Observable<string[]>;
   @Input() property$: Observable<Property>;
 
-  navbarItems = ['Fotos', 'Mapa'];
-  navbarSelectedItem = 0;
+  navbarItems = ['photos', 'map'];
+  navbarSelectedItem$ = this.navbarSelectedItem.asObservable();
 
   tags$: Observable<string[]>;
 
@@ -23,6 +25,6 @@ export class PropertyOverviewComponent implements OnInit {
   }
 
   itemChange(index: number): void {
-    this.navbarSelectedItem = index;
+    this.navbarSelectedItem.next(index);
   }
 }

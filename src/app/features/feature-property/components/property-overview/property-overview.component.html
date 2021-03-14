@@ -1,18 +1,18 @@
 <app-custom-navbar
   [items]="navbarItems"
-  [selectedItem]="navbarSelectedItem"
+  [selectedItem]="navbarSelectedItem$ | async"
   (itemChange)="itemChange($event)"
 ></app-custom-navbar>
 
 <app-custom-carousel
   [imagesUrl$]="imagesUrl$"
   [tags$]="tags$"
-  [class.d-none]="!(navbarSelectedItem === 0)"
+  [class.d-none]="!((navbarSelectedItem$ | async) === 0)"
 ></app-custom-carousel>
 
 <ng-container *ngIf="property$ | async as property">
   <agm-map
-    [class.d-none]="!(navbarSelectedItem === 1)"
+    [class.d-none]="!((navbarSelectedItem$ | async) === 1)"
     [latitude]="property?.location.latitude"
     [longitude]="property?.location.longitude"
     [draggable]="false"
