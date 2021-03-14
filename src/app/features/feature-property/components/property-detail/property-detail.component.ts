@@ -26,6 +26,9 @@ export class PropertyDetailComponent implements OnInit {
   constructor(private translocoService: TranslocoService) {}
 
   ngOnInit(): void {
+    /**
+     * Store an array of details following the Detail interface
+     */
     this.details$ = this.property$.pipe(
       map((property) => {
         const keys = this.getKeys();

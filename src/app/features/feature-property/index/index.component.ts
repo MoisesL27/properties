@@ -27,6 +27,9 @@ export class IndexComponent {
     shareReplay()
   );
 
+  /**
+   * Store the current property, and the order is habled by this.propertyIndex behaviorSubjec
+   */
   currentProperty$ = this.propertyIndex.asObservable().pipe(
     switchMap((index) =>
       this.properties$.pipe(
@@ -36,6 +39,10 @@ export class IndexComponent {
     shareReplay()
   );
 
+  /**
+   * When a new property is rendered using see next button each time that it happend request
+   * for the properties images
+   */
   propertyImages$ = this.currentProperty$.pipe(
     switchMap((property) => {
       // this (propertyId - 1)  is because the urls of images are zero index
@@ -53,6 +60,10 @@ export class IndexComponent {
     @Inject(HeaderConfigToken) public headerMenus: HeaderMenu[]
   ) {}
 
+  /**
+   * Handle the logic to show more information of other properties
+   * @returns void
+   */
   showNextProperty(): void {
     const currentIndex = this.propertyIndex.value;
 
