@@ -6,5 +6,19 @@
   "show-more": "Mostrar mas",
   "property-details": "Detalles de propiedad",
   "see-next": "Ver siguiente",
-  "image-property": "Imagen de la propiedad"
+  "image-property": "Imagen de la propiedad",
+  "air-conditioner": "Aire Acondicionado",
+  "backyard": "Jardín",
+  "bathrooms": "Baños",
+  "bedrooms": "Habitaciones",
+  "floors": "Niveles",
+  "parking": "Cochera",
+  "security": "Seguridad",
+  "service-room": "Cuarto de servicio",
+  "size": "Tamaño del lote",
+  "terrace": "Terraza",
+  "type": "Tipo de propiedad",
+  "warehouse": "Bodega",
+  "yes": "Si",
+  "no": "No"
 }

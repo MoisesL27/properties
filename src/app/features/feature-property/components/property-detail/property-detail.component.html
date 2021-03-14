@@ -5,6 +5,16 @@
 
   <section>
     <h5 class="font-weight-bold text-primary">{{ 'property-details' | transloco }}:</h5>
+    <div class="px-5">
+      <div class="row">
+        <ng-container *ngFor="let detail of details$ | async; index as i">
+          <div class="col-12 col-md-4 py-2">
+            <div>{{ detail.label | transloco }}:</div>
+            <div class="font-weight-bold">{{ detail.value }}</div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
   </section>
 
   <div class="divider my-4"></div>
