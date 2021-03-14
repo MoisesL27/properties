@@ -14,6 +14,11 @@
   opacity: 0.9;
   position: absolute;
   z-index: 5;
+  transition: background-color 1s ease;
+
+  &:hover {
+    background-color: darken(rgb(37, 36, 36, 0.6), 40);
+  }
 }
 
 .btn-map-container img,
